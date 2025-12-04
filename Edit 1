@@ -98,4 +98,24 @@ int main(int argc, char *argv[])
         int result = gcd(a, b);
         cout << "gcd(" << a << ", " << b << ") = " << result << endl;
     }
+    else if ( option == 2 ){
+        //inverse: expects 2 more args: a m
+        if (argc != 4){
+            cout << "Error: modInverse requires 2 integer arguments." << endl;
+            return 1;
+        }
+        int a = atoi(argv[2]);
+        int m = atoi(argv[3]);
+
+        if (a <= 0 || m <= 0){
+            cout << "Error: arguments must be positive integers." << endl;
+            return 1;
+        }
+        int inverse = modInverse(a, m);
+        if (inverse == -1){
+            cout << "Modular inverse does not exist for a = " << a << " and m = " << m << "." << endl;
+        } else {
+            cout << "Modular inverse of " << a << " modulo " << m << " is " << inverse << "." << endl;
+        }
+    }
 }
