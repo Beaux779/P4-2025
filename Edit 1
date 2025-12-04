@@ -118,4 +118,11 @@ int main(int argc, char *argv[])
             cout << "Modular inverse of " << a << " modulo " << m << " is " << inverse << "." << endl;
         }
     }
+
+    else
+    {
+        cout << "Error: Unknown option. Use 1 for gcd or 2 for modular inverse." << endl;
+    }
+
+    return 0;
 }
