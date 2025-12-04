@@ -157,8 +157,8 @@ int main(int argc, char *argv[])
         int c = static_cast<int>(temp % m);
         if (c < 0) c += m;
 
-        cout << "The solution x to the linear congruence " << a << "x ≡ " 
-             << b << " (mod " << m << ") is x ≡ " << c << " (mod " << m << ")." << endl;
+        cout << "The solution for " << a << "x === " 
+             << b << "(mod " << m << ") is x === " << c << "(mod " << m << ")." << endl;
     }
     else
     {
