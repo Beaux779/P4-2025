@@ -111,17 +111,63 @@ int main(int argc, char *argv[])
             cout << "Error: arguments must be positive integers." << endl;
             return 1;
         }
-        int inverse = modInverse(a, m);
-        if (inverse == -1){
+        if (a <= 0 || m <= 0 || a >= m){
+            cout << "Error: require positive integers with a < m." << endl;
+            return 1;
+        }
+
+        if (gcd(a, m) != 1) {
+            cout << "Error: gcd(" << a << ", " << m 
+                << ") is not 1. Modular inverse does not exist." << endl;
+            return 1;
+        }
+        int inverseA = modInverse(a, m);
+        if (inverseA == -1){
             cout << "Modular inverse does not exist for a = " << a << " and m = " << m << "." << endl;
         } else {
-            cout << "Modular inverse of " << a << " modulo " << m << " is " << inverse << "." << endl;
+            cout << "Modular inverse of " << a << " modulo " << m << " is " << inverseA << "." << endl;
         }
+    }
+
+    else if (option == 3) {
+        // Solve the linear congruence: a x ≡ b (mod m)
+        if (argc != 5) {
+            cout << "Error: functionality 3 requires three integer arguments: a b m." << endl;
+            return 1;
+        }
+
+        int a = atoi(argv[2]);
+        int b = atoi(argv[3]);
+        int m = atoi(argv[4]);
+
+        if (a <= 0 || b <= 0 || m <= 0 || a >= m || b >= m) {
+            cout << "Error: require positive integers with a < m and b < m." << endl;
+            return 1;
+        }
+
+        // gcd(a, m) must be 1 for a unique solution
+        if (gcd(a, m) != 1) {
+            cout << "Error: gcd(a, m) must be 1 for a unique solution." << endl;
+            return 1;
+        }
+
+    int inv = modInverse(a, m);
+        if (inv == -1) {
+            cout << "Modular inverse does not exist for a = " << a
+                << " and m = " << m << "." << endl;
+        return 1;
+        }
+
+        int c = static_cast<int>((static_cast<long long>(b) * inv) % m);
+        if (c < 0) c += m;
+
+        cout << "The solution for " << a << "x===" << b
+             << "(mod" << m << ") is x===" << c << "(mod" << m << ")" << endl;
     }
 
     else
     {
-        cout << "Error: Unknown option. Use 1 for gcd or 2 for modular inverse." << endl;
+        cout << "Error: Unknown option. Use 1 for gcd or 2 for modular inverse, or 3 for solving linear congruence." << endl;
     }
 
     return 0;
