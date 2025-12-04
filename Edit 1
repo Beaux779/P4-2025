@@ -70,3 +70,13 @@ int modInverse(int a, int m)
     return result;
 }
 
+int main(int argc, char *argv[]) 
+{
+
+    if (argc < 2) {
+        cout << "Invalid input." << endl;
+        return 0;
+    }
+
+    int option = atoi(argv[1]);
+}
