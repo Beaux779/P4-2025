@@ -150,21 +150,7 @@ int main(int argc, char *argv[])
             cout << "Error: gcd(a, m) must be 1 for a unique solution." << endl;
             return 1;
         }
-
-    int inv = modInverse(a, m);
-        if (inv == -1) {
-            cout << "Modular inverse does not exist for a = " << a
-                << " and m = " << m << "." << endl;
-        return 1;
-        }
-
-        int c = static_cast<int>((static_cast<long long>(b) * inv) % m);
-        if (c < 0) c += m;
-
-        cout << "The solution for " << a << "x===" << b
-             << "(mod" << m << ") is x===" << c << "(mod" << m << ")" << endl;
     }
-
     else
     {
         cout << "Error: Unknown option. Use 1 for gcd or 2 for modular inverse, or 3 for solving linear congruence." << endl;
