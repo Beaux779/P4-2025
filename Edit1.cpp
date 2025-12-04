@@ -70,32 +70,3 @@ int modInverse(int a, int m)
     return result;
 }
 
-int main(int argc, char *argv[]) 
-{
-
-    if (argc < 2) {
-        cout << "Invalid input." << endl;
-        return 0;
-    }
-
-    int option = atoi(argv[1]);
-
-    if (option == 1){
-        // gcd: expects 2 more args: a b
-        if (argc != 4){
-            cout << "Error: gcd requires 2 integer arguments." << endl;
-            return 1;
-        }
-
-        int a = atoi(argv[2]);
-        int b = atoi(argv[3]);
-
-        if (a <= 0 || b <= 0){
-            cout << "Error: arguments must be positive integers." << endl;
-            return 1;
-        }
-
-        int result = gcd(a, b);
-        cout << "gcd(" << a << ", " << b << ") = " << result << endl;
-    }
-}
